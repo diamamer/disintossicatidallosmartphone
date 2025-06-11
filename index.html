@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Disintossicazione da Smartphone</title>
+  
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet" />
+  
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comfortaa', cursive, sans-serif;
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    main {
+      text-align: center;
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 16px;
+      padding: 2rem 3rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      color: #2c3e50;
+    }
+    p {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      color: #34495e;
+    }
+    button {
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 8px;
+      background: #16a085;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 12px rgba(22, 160, 133, 0.6);
+    }
+    button:hover {
+      background-color: #13876d;
+    }
+    #message {
+      margin-top: 1.5rem;
+      font-weight: bold;
+      color: #27ae60;
+      min-height: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Disintossicazione da Smartphone</h1>
+    <p>
+      Riscopri l'equilibrio mentale e il benessere distaccandoti dall'uso eccessivo dello smartphone.
+      Segui i nostri consigli e notifiche per aiutarti a ritrovare la calma.
+    </p>
+    <button id="startBtn">Inizia Ora</button>
+    <div id="message"></div>
+  </main>
+
+  <script>
+    const startBtn = document.getElementById('startBtn');
+    const message = document.getElementById('message');
+    let timer;
+
+    startBtn.addEventListener('click', () => {
+      if(timer) {
+        clearInterval(timer);
+        timer = null;
+        message.textContent = 'Disintossicazione interrotta. Torna quando vuoi!';
+        startBtn.textContent = 'Inizia Ora';
+      } else {
+        message.textContent = 'Ben fatto! Ti avviserò ogni 15 minuti per staccare lo smartphone.';
+        startBtn.textContent = 'Ferma';
+        timer = setInterval(() => {
+          alert('È tempo di una pausa dallo smartphone! Respira e rilassati.');
+        }, 900000); // 900000 ms = 15 minuti
+      }
+    });
+  </script>
+</body>
+</html>
