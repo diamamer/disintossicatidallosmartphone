@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Disintossicazione da Smartphone</title>
+
+  <!-- Google Fonts: Playfair Display -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Reset */
+    * {
+      box-sizing: border-box;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Playfair Display', serif;
+      background: linear-gradient(135deg, #f7ede2, #d4c5a9);
+      overflow-x: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6b5e44;
+      position: relative;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Soft textured overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(circle at center, rgba(255 255 255 / 0.15) 0%, transparent 70%),
+        repeating-radial-gradient(circle at center, rgba(0 0 0 / 0.02) 0 1px, transparent 2px 8px);
+      pointer-events: none;
+      z-index: 0;
+      animation: overlayMove 40s linear infinite;
+    }
+    @keyframes overlayMove {
+      0% { background-position: 0 0, 0 0; }
+      100% { background-position: 200px 200px, 400px 400px; }
+    }
+
+    main {
+      position: relative;
+      background: rgba(255 255 255 / 0.9);
+      max-width: 480px;
+      width: 90%;
+      padding: 3rem 2.5rem 3rem;
+      border-radius: 24px;
+      box-shadow: 0 12px 36px rgba(107 94 68 / 0.35);
+      text-align: center;
+      user-select: none;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Video container */
+    .video-container {
+      width: 100%;
+      border-radius: 18px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 26px rgba(107 94 68 / 0.3);
+      animation: fadeInScale 1.5s ease forwards;
+      opacity: 0;
+      transform: scale(0.95);
+    }
+
+    @keyframes fadeInScale {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 18px;
+      background: #eae3d6;
+    }
+
+    h1 {
+      font-weight: 700;
+      font-size: 3rem;
+      margin: 0 0 1rem;
+      color: #6b5e44;
+      letter-spacing: 3px;
+      animation: fadeInSlideUp 1.5s ease forwards;
+      opacity: 0;
+      transform: translateY(25px);
+    }
+
+    p.description {
+      font-size: 1.15rem;
+      margin: 0 0 2.2rem;
+      color: #7a6f55;
+      line-height: 1.5;
+      animation: fadeInSlideUp 1.8s ease forwards;
+      opacity: 0;
+      transform: translateY(25px);
+    }
+
+    @keyframes fadeInSlideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    label {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #6b5e44;
+      align-self: flex-start;
+      margin-bottom: 0.5rem;
+    }
+
+    select {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      font-size: 1rem;
+      border: 2px solid #bfa669;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      color: #7a6f55;
+      background: #fdf8f0;
+      box-shadow: inset 0 1px 5px rgba(0,0,0,0.05);
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+      cursor: pointer;
+      font-family: 'Playfair Display', serif;
+    }
+    select:hover, select:focus {
+      border-color: #6b5e44;
+      outline: none;
+      background: #faf3dc;
+    }
+
+    button {
+      width: 100%;
+      background-color: #6b5e44;
+      color: white;
+      font-weight: 700;
+      font-size: 1.4rem;
+      padding: 1.1rem;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(107 94 68 / 0.5);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      user-select: none;
+      font-family: 'Playfair Display', serif;
+    }
+    button:hover:not(:disabled) {
+      background-color: #bfa669;
+      color: #4e3d1c;
+      transform: scale(1.05);
+      box-shadow: 0 14px 30px rgba(191 166 105 / 0.7);
+    }
+    button:disabled {
+      background-color: #dfd3b6;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+      color: #8b8260;
+    }
+
+    #message {
+      margin-top: 1.6rem;
+      font-weight: 600;
+      font-size: 1.15rem;
+      min-height: 1.5em;
+      color: #7a6f55;
+      font-style: italic;
+      animation: fadeInSlideUp 2.5s ease forwards;
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    #error {
+      color: #b0341a;
+      margin-top: 1rem;
+      font-weight: 700;
+      font-size: 1rem;
+      min-height: 1.5em;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      main {
+        padding: 2rem 1.5rem 2rem;
+      }
+      h1 {
+        font-size: 2.2rem;
+      }
+      p.description {
+        font-size: 1rem;
+      }
+      button {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="video-container" aria-label="Video di una persona stressata che raggiunge equilibrio mentale">
+      <video autoplay muted loop playsinline preload="auto" poster="https://cdn.pixabay.com/photo/2016/11/29/05/08/office-1869239_960_720.jpg">
+        <source src="https://cdn.pixabay.com/vimeo/458035364/office-stress-6892.mp4?width=1280&hash=96454c7b5e8d20952a6f46b3d57b1873f37a6c24" type="video/mp4" />
+        Il tuo browser non supporta il video.
+      </video>
+    </div>
+
+    <h1>Disintossicazione da Smartphone</h1>
+    <p class="description">
+      Riscopri l'equilibrio mentale e il benessere distaccandoti dall'uso eccessivo dello smartphone.<br />
+      Scegli ogni quanto ricevere una notifica per fare una pausa e respirare.
+    </p>
+
+    <label for="intervalSelect">Intervallo notifiche</label>
+    <select id="intervalSelect" aria-label="Intervallo notifiche">
+      <option value="300000">5 minuti</option>
+      <option value="600000">10 minuti</option>
+      <option value="900000" selected>15 minuti</option>
+      <option value="1800000">30 minuti</option>
+      <option value="3600000">60 minuti</option>
+    </select>
+
+    <button id="startBtn">Inizia Ora</button>
+
+    <div id="message" aria-live="polite"></div>
+    <div id="error" role="alert"></div>
+  </main>
+
+  <script>
+    const startBtn = document.getElementById('startBtn');
+    const message = document.getElementById('message');
+    const error = document.getElementById('error');
+    const intervalSelect = document.getElementById('intervalSelect');
+    let notificationIntervalId;
+
+    function notifyUser() {
+      if (!("Notification" in window)) {
+        error.textContent = "Le notifiche non sono supportate dal tuo browser.";
+        return;
+      }
+      if (Notification.permission === "granted") {
+        new Notification("Prenditi una pausa!", {
+          body: "È il momento di staccare dallo smartphone e rilassarti.",
+          icon: "https://cdn-icons-png.flaticon.com/512/3064/3064197.png"
+        });
+      }
+    }
+
+    startBtn.addEventListener('click', () => {
+      error.textContent = "";
+      message.textContent = "";
+
+      if (!("Notification" in window)) {
+        error.textContent = "Le notifiche non sono supportate dal tuo browser.";
+        return;
+      }
+
+      if (Notification.permission === "default") {
+        Notification.requestPermission().then(permission => {
+          if (permission === "granted") {
+            startNotifications();
+          } else {
+            error.textContent = "Permesso notifiche negato. Non possiamo inviarti alert.";
+          }
+        });
+      } else if (Notification.permission === "granted") {
+        startNotifications();
+      } else {
+        error.textContent = "Permesso notifiche negato. Non possiamo inviarti alert.";
+      }
+    });
+
+    function startNotifications() {
+      if (notificationIntervalId) clearInterval(notificationIntervalId);
+
+      const interval = parseInt(intervalSelect.value);
+      notifyUser(); // subito la prima notifica
+
+      notificationIntervalId = setInterval(() => {
+        notifyUser();
+      }, interval);
+
+      message.textContent = `Notifiche attive ogni ${interval / 60000} minuti. Buona disintossicazione!`;
+      startBtn.disabled = true;
+      intervalSelect.disabled = true;
+    }
+  </script>
+</body>
+</html>
