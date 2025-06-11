@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Disintossicazione Digitale – Ritrova il tuo equilibrio mentale</title>
+
+  <!-- Font e Stile PayPal -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
+    
+    body {
+      margin: 0;
+      font-family: 'Merriweather', serif;
+      background: linear-gradient(135deg, #f4ede8 0%, #d9cfc3 100%);
+      color: #4a403a;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.3rem;
+      color: #7d6b58;
+    }
+
+    header p {
+      font-size: 1.25rem;
+      color: #9e8f7a;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    main {
+      flex-grow: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1rem 2rem 3rem;
+    }
+
+    .video-container {
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    iframe {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(125, 107, 88, 0.3);
+    }
+
+    section.description {
+      background: #fdf8f3cc;
+      border-radius: 12px;
+      padding: 2rem 2rem 3rem;
+      box-shadow: 0 6px 12px rgb(125 107 88 / 0.15);
+      margin-bottom: 2rem;
+    }
+
+    section.description h2 {
+      color: #7d6b58;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    section.description ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+      color: #5f4e3a;
+    }
+
+    .price-buy {
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+
+    .price {
+      font-size: 2rem;
+      color: #7d6b58;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .paypal-button {
+      background-color: #FFD700;
+      color: #000000;
+      border: none;
+      padding: 18px 50px;
+      font-size: 26px;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      user-select: none;
+    }
+
+    .paypal-button:hover {
+      background-color: #FFC300;
+      transform: scale(1.08);
+    }
+
+    section.faq {
+      max-width: 700px;
+      margin: 3rem auto 1rem;
+    }
+
+    section.faq h3 {
+      color: #7d6b58;
+      margin-bottom: 1rem;
+    }
+
+    section.faq details {
+      background: #fff6ea;
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 3px 7px rgb(125 107 88 / 0.1);
+      cursor: pointer;
+    }
+
+    section.faq summary {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      font-size: 0.9rem;
+      color: #9e8f7a;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      main {
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Disintossicazione Digitale</h1>
+  <p>Ritrova il tuo equilibrio mentale e vivi meglio con la nostra applicazione web semplice ed efficace per disconnetterti dallo smartphone.</p>
+</header>
+
+<main>
+  <div class="video-container">
+    <iframe width="100%" height="400"
+      src="https://www.youtube.com/embed/lnY1NSYCvHM"
+      title="Digital Detox | A Very Short Film"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+    <p style="text-align:center; font-style:italic; color:#7d6b58; margin-top:0.5rem;">
+      Spot breve: dallo stress digitale a un momento di tranquillità
+    </p>
+  </div>
+
+  <section class="description">
+    <h2>Perché scegliere questa applicazione web?</h2>
+    <ul>
+      <li>Notifiche intelligenti per staccarti dallo smartphone nel momento giusto.</li>
+      <li>Interfaccia semplice, senza distrazioni.</li>
+      <li>Facile da installare e usare su qualsiasi smartphone.</li>
+      <li>Aiuta a migliorare concentrazione, benessere e qualità del sonno.</li>
+    </ul>
+
+    <div class="price-buy">
+      <div class="price">Prezzo: € 11,99</div>
+
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_xclick" />
+        <input type="hidden" name="business" value="meraglia.diamante@gmail.com" />
+        <input type="hidden" name="item_name" value="Prodotto Digitale" />
+        <input type="hidden" name="amount" value="11.99" />
+        <input type="hidden" name="currency_code" value="EUR" />
+        <button type="submit" class="paypal-button">Acquista Ora con PayPal</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="faq">
+    <h3>Domande Frequenti</h3>
+    <details>
+      <summary>Come funziona questa applicazione web?</summary>
+      <p>Invia notifiche programmabili che ti aiutano a ridurre il tempo di utilizzo dello smartphone, migliorando il tuo benessere mentale.</p>
+    </details>
+    <details>
+      <summary>Posso usare l'applicazione su qualsiasi smartphone?</summary>
+      <p>Sì, è compatibile con tutti i principali smartphone e browser moderni.</p>
+    </details>
+    <details>
+      <summary>Come ricevo il prodotto dopo l'acquisto?</summary>
+      <p>Riceverai un link per scaricare il file ZIP con l'applicazione e una guida rapida via email o direttamente sulla pagina di conferma PayPal.</p>
+    </details>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Disintossicazione Digitale - Tutti i diritti riservati
+</footer>
+
+</body>
+</html>
